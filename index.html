@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gannon & Confession Facts Site</title>
+    <title>FACTS AND TRIVIA FOR MIDDLE SCHOOL RETREAT</title>
     <link rel="icon" href="gannon_favicon.png" type="image/png"> 
     
     <style>
@@ -43,7 +43,7 @@
             border: none;
             outline: none;
             cursor: pointer;
-            padding: 16px 20px; /* Increased padding */
+            padding: 16px 20px; 
             transition: 0.3s;
             font-size: 16px;
             font-family: Arial, sans-serif; 
@@ -65,11 +65,11 @@
         /* --- Tab Content Styling --- */
         .tab-content {
             display: none;
-            padding: 30px; /* Increased padding */
+            padding: 30px; 
             background-color: white;
             min-height: 600px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border-radius: 0 0 8px 8px; /* Rounded bottom corners */
+            border-radius: 0 0 8px 8px; 
             margin: 10px 20px 20px 20px;
         }
         
@@ -83,23 +83,24 @@
         /* --- Gallery Styling (Tab 1) --- */
         #gallery-tab {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Larger minimum size */
-            gap: 20px; /* Increased gap */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 20px; 
         }
 
         .gallery-photo {
-            border: 4px solid #FFC72C; /* Gold border */
+            border: 4px solid #FFC72C; 
             padding: 5px;
             text-align: center;
             background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
             border-radius: 8px;
             overflow: hidden; 
             transition: transform 0.2s;
+            cursor: pointer; /* Indicate clickability */
         }
         
         .gallery-photo:hover {
-            transform: translateY(-3px); /* Lift effect on hover */
+            transform: translateY(-3px); 
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
 
@@ -108,6 +109,67 @@
             height: auto;
             display: block;
             border-radius: 4px;
+        }
+
+        /* --- Lightbox/Modal for Photos --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            padding-top: 60px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.9); 
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        
+        .modal-content, #caption {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+        
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
         }
 
         /* --- Fun Facts Styling (Tab 2, 5) --- */
@@ -121,7 +183,7 @@
         
         .fact-section h3 {
             color: #730018; 
-            border-left: 6px solid #FFC72C; /* Thicker accent line */
+            border-left: 6px solid #FFC72C; 
             padding-left: 12px;
             margin-top: 0;
             font-size: 1.4em;
@@ -156,7 +218,7 @@
         .game-area {
             margin-top: 20px;
             padding: 40px;
-            border: 3px solid #730018; /* Solid Maroon border */
+            border: 3px solid #730018; 
             background-color: #fffaf0;
             border-radius: 15px;
             text-align: center;
@@ -190,7 +252,7 @@
         }
 
         .answer-button:hover:not(:disabled) {
-            background-color: #FFC72C; /* Gold hover */
+            background-color: #FFC72C; 
             color: #730018;
             border-color: #730018;
         }
@@ -202,12 +264,12 @@
 
         /* Feedback Colors */
         .correct {
-            background-color: #28a745 !important; /* Green */
+            background-color: #28a745 !important; 
             color: white !important;
             border-color: #1e7e34 !important;
         }
         .incorrect {
-            background-color: #dc3545 !important; /* Red */
+            background-color: #dc3545 !important; 
             color: white !important;
             border-color: #bd2130 !important;
         }
@@ -230,7 +292,7 @@
 <body>
 
     <div class="header-bar">
-        GANNON & CONFESSION FACTS SITE 🛡️
+        FACTS AND TRIVIA FOR MIDDLE SCHOOL RETREAT
     </div>
 
     <div class="tab-nav">
@@ -242,63 +304,69 @@
     </div>
 
     <div id="Tab1" class="tab-content">
-        <h2>📸 Photo Gallery: Gannon Campus Views</h2>
+        <h2>📸 Photo Gallery: Gannon Campus Views (Click to Enlarge!)</h2>
         <p>A mix of campus life, architecture, and beautiful Erie skies across different seasons.</p>
         <div id="gallery-tab">
             
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (1).jpeg" alt="Gothic church spires against a clear blue sky">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (1).jpeg" alt="Gothic church spires against a clear blue sky" onclick="openModal(this)">
             </div>
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM.jpg" alt="Close-up of a large stained glass window on a stone church">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM.jpg" alt="Close-up of a large stained glass window on a stone church" onclick="openModal(this)">
             </div>
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (3).jpeg" alt="Chapel spire against a cloudy sky with flying birds">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (3).jpeg" alt="Chapel spire against a cloudy sky with flying birds" onclick="openModal(this)">
             </div>
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (6).jpeg" alt="Chapel and campus building at sunset from a street view">
-            </div>
-            
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (5).jpg" alt="Statue of the Virgin Mary against a brick wall">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (4).jpg" alt="Another view of the Virgin Mary statue">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (2).jpeg" alt="Hand holding a lit candle with a 'Candlelight Service' holder">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (6).jpeg" alt="Chapel and campus building at sunset from a street view" onclick="openModal(this)">
             </div>
             
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (7).jpeg" alt="Chapel and parking lot under a dramatic sunset sky">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (5).jpg" alt="Statue of the Virgin Mary against a brick wall" onclick="openModal(this)">
             </div>
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (8).jpeg" alt="Chapel building with a vibrant orange and gray sunset sky">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (4).jpg" alt="Another view of the Virgin Mary statue" onclick="openModal(this)">
+            </div>
+            <div class="gallery-photo">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (2).jpeg" alt="Hand holding a lit candle with a 'Candlelight Service' holder" onclick="openModal(this)">
             </div>
             
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (2).jpeg" alt="Snowy path at night on campus">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (7).jpeg" alt="Chapel and parking lot under a dramatic sunset sky" onclick="openModal(this)">
             </div>
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM.jpeg" alt="Small rabbit sitting in the grass near a bench">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (8).jpeg" alt="Chapel building with a vibrant orange and gray sunset sky" onclick="openModal(this)">
+            </div>
+            
+            <div class="gallery-photo">
+                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (2).jpeg" alt="Snowy path at night on campus" onclick="openModal(this)">
             </div>
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (1).jpg" alt="Bench with Gannon logo, rabbit, and Virgin Mary statue">
+                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM.jpeg" alt="Small rabbit sitting in the grass near a bench" onclick="openModal(this)">
             </div>
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (3).jpeg" alt="Snowy footpath leading toward the chapel spire">
+                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (1).jpg" alt="Bench with Gannon logo, rabbit, and Virgin Mary statue" onclick="openModal(this)">
             </div>
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (4).jpeg" alt="Snow-covered campus walkway near buildings and parked cars">
+                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (3).jpeg" alt="Snowy footpath leading toward the chapel spire" onclick="openModal(this)">
             </div>
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (6).jpeg" alt="View of a snowy parking area and walkway">
+                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (4).jpeg" alt="Snow-covered campus walkway near buildings and parked cars" onclick="openModal(this)">
             </div>
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (5).jpeg" alt="Person walking on a cleared snowy path toward a red car and the chapel">
+                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (6).jpeg" alt="View of a snowy parking area and walkway" onclick="openModal(this)">
+            </div>
+            <div class="gallery-photo">
+                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (5).jpeg" alt="Person walking on a cleared snowy path toward a red car and the chapel" onclick="openModal(this)">
             </div>
 
         </div>
+    </div>
+    
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
     </div>
 
     <div id="Tab2" class="tab-content">
@@ -383,8 +451,31 @@
 
         // Open the default tab on page load
         document.getElementById("defaultOpen").click();
+        
+        // --- 2. Lightbox/Modal Functionality ---
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("img01");
+        const captionText = document.getElementById("caption");
+        
+        function openModal(imgElement) {
+            modal.style.display = "block";
+            modalImg.src = imgElement.src;
+            captionText.innerHTML = imgElement.alt;
+        }
 
-        // --- 2. Fact Data ---
+        function closeModal() {
+            modal.style.display = "none";
+        }
+        
+        // Close modal when user clicks outside the image area
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+
+        // --- 3. Fact Data ---
 
         const factData = {
             confession: [
@@ -421,7 +512,7 @@
                 "Joan famously wore full men's armor and cutting her hair short—which was very unusual for the time.",
                 "Joan was captured and sadly executed when she was only 19 years old.",
                 "Joan of Arc is the Patron Saint of France and a symbol of fighting for what is right.",
-                // Edward the Confessor FACTS - NOW CONFIRMED
+                // Edward the Confessor
                 "Edward the Confessor was given his title because he bravely 'confessed' (professed) his Christian faith through his life, not because he was a martyr.",
                 "Edward started building the magnificent Westminster Abbey in London.",
                 "Edward took a private vow to live a life of chastity, so he and his wife Edith never had children.",
@@ -429,22 +520,20 @@
                 "Edward's father was Æthelred II, famously known as 'Æthelred the Unready'."
             ],
             gannonUniversityHistory: [ 
-                "Gannon College of Arts and Sciences started its life way back in 1925 as Cathedral College under the charter of Villa Maria College.",
-                "In 1941, Archbishop John Mark Gannon purchased the gorgeous Strong Mansion in downtown Erie. This historic building became the central site of the campus and is known today as 'Old Main'.",
-                "It received its own charter as a four-year, men's-only institution in 1944, when it was renamed Gannon College.",
-                "Gannon went co-educational and established its graduate school in 1964.",
-                "The college officially became Gannon University in 1979!",
-                "Gannon is a private, Catholic, comprehensive co-educational institution and is considered Northwestern Pennsylvania's premier Catholic university and a valuable community resource.",
-                "A major part of Gannon's mission is fostering leadership through campus organizations, volunteerism, and community service.",
-                "Today, Gannon is dedicated to boosting academic excellence, strengthening its Catholic identity, growing its financial resources, developing faculty scholarship, serving the community, increasing enrollment, and enhancing technology."
+                "Cathedral Beginnings! Gannon College of Arts and Sciences started its life way back in 1925 as Cathedral College under the charter of Villa Maria College.",
+                "The Mansion's History! In 1941, Archbishop John Mark Gannon purchased the gorgeous Strong Mansion in downtown Erie. This historic building became the central site of the campus and is known today as 'Old Main'.",
+                "A Men's College... for a Time! It received its own charter as a four-year, men's-only institution in 1944, when it was renamed Gannon College.",
+                "Welcome, Ladies! Gannon went co-educational and established its graduate school in 1964.",
+                "University Status Achieved! The college officially became Gannon University in 1979!",
+                "A Regional Gem! Gannon is a private, Catholic, comprehensive co-educational institution and is considered Northwestern Pennsylvania's premier Catholic university and a valuable community resource.",
+                "Focus on Future Leaders! A major part of Gannon's mission is fostering leadership through campus organizations, volunteerism, and community service.",
+                "Commitment to the Future! Today, Gannon is dedicated to boosting academic excellence, strengthening its Catholic identity, growing its financial resources, developing faculty scholarship, serving the community, increasing enrollment, and enhancing technology."
             ]
         };
 
-        // --- 3. Dynamic Fact Loading (Tab 2 & Tab 5) ---
-        // This function loads the facts from the JavaScript object into the HTML lists.
+        // --- 4. Dynamic Fact Loading (Tab 2 & Tab 5) ---
         function loadFacts(category, elementId) {
             const factsList = document.querySelector(`#${elementId} .facts-list`);
-            // Check if the facts list element exists to prevent errors
             if (factsList) {
                 factsList.innerHTML = '';
                 factData[category].forEach(factText => {
@@ -455,13 +544,12 @@
             }
         }
         
-        // Call the loader for each fact section
         loadFacts('confession', 'confession-facts'); 
         loadFacts('archbishopGannon', 'archbishop-gannon-facts'); 
-        loadFacts('saints', 'saint-facts'); // This call will now populate the Edward the Confessor facts
-        loadFacts('gannonUniversityHistory', 'gannon-university-history-list'); 
+        loadFacts('saints', 'saint-facts'); 
+        loadFacts('gannonUniversityHistory', 'gannon-university-history-list'); // THIS IS THE CORRECTED SECTION
         
-        // --- 4. Game Question Data (Unchanged) ---
+        // --- 5. Game Question Data (Unchanged) ---
 
         const saintQuestions = [
             {
@@ -509,7 +597,7 @@
             }
         ];
 
-        // --- 5. Generic Game Engine Function (Unchanged) ---
+        // --- 6. Generic Game Engine Function (Unchanged) ---
         
         function setupGame(questions, prefix) {
             let currentQuestionIndex = 0;
