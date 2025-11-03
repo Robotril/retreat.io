@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GANNON MIDDLE SCHOOL RETREAT</title>
+    <title>FACTS AND TRIVIA FOR MIDDLE SCHOOL RETREAT</title>
     <link rel="icon" href="gannon_favicon.png" type="image/png"> 
     
     <style>
@@ -292,7 +292,7 @@
 <body>
 
     <div class="header-bar">
-        FACTS AND TRIVIA FOR MIDDLE SCHOOL RETREAT 🛡️
+        FACTS AND TRIVIA FOR MIDDLE SCHOOL RETREAT
     </div>
 
     <div class="tab-nav">
@@ -397,8 +397,7 @@
         <div class="fact-section">
             <h3>🛡️ Gannon University Development</h3>
             <ul class="facts-list" id="gannon-university-history-list">
-                 <li>**Gannon Facts Loading...** If you see this, the facts are on their way! Click the 'Fun Facts' tab and back, or check the trivia game!</li>
-            </ul>
+                </ul>
         </div>
     </div>
 
@@ -448,11 +447,6 @@
 
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
-            
-            // Re-load facts when Gannon tab is opened, just in case (redundancy check)
-            if (tabName === 'Tab5') {
-                 loadFacts('gannonUniversityHistory', 'gannon-university-history-list');
-            }
         }
 
         // Open the default tab on page load
@@ -541,7 +535,7 @@
         function loadFacts(category, elementId) {
             const factsList = document.querySelector(`#${elementId} .facts-list`);
             if (factsList) {
-                factsList.innerHTML = ''; // Clear existing content (like the default message)
+                factsList.innerHTML = '';
                 factData[category].forEach(factText => {
                     const listItem = document.createElement('li');
                     listItem.textContent = factText;
@@ -550,11 +544,10 @@
             }
         }
         
-        // Initial fact loading when the page script runs
         loadFacts('confession', 'confession-facts'); 
         loadFacts('archbishopGannon', 'archbishop-gannon-facts'); 
         loadFacts('saints', 'saint-facts'); 
-        loadFacts('gannonUniversityHistory', 'gannon-university-history-list'); 
+        loadFacts('gannonUniversityHistory', 'gannon-university-history-list'); // THIS IS THE CORRECTED SECTION
         
         // --- 5. Game Question Data (Unchanged) ---
 
@@ -699,5 +692,4 @@
     </script>
 
 </body>
-
 </html>
