@@ -1,695 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FACTS AND TRIVIA FOR MIDDLE SCHOOL RETREAT</title>
-    <link rel="icon" href="gannon_favicon.png" type="image/png"> 
-    
-    <style>
-        /* Gannon Colors: Maroon/Burgundy (#730018) and Gold/Yellow (#FFC72C) */
-        
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #e6e6e6; /* Light gray background for contrast */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FACTS AND TRIVIA FOR MIDDLE SCHOOL RETREAT</title>
+<link rel="icon" href="gannon_favicon.png" type="image/png">
 
-        /* --- Header/Branding --- */
-        .header-bar {
-            background-color: #730018; /* Gannon Maroon */
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-            font-size: 1.8em;
-            font-weight: bold;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        }
+<style>
+/* Gannon Colors: Maroon (#730018) & Gold (#FFC72C) */
 
-        /* --- Tab Navigation Styling --- */
-        .tab-nav {
-            overflow: hidden;
-            border-bottom: 3px solid #FFC72C; 
-            background-color: #590013; /* Darker Maroon */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .tab-nav button {
-            background-color: inherit;
-            color: white; 
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 16px 20px; 
-            transition: 0.3s;
-            font-size: 16px;
-            font-family: Arial, sans-serif; 
-            text-transform: uppercase;
-        }
-
-        .tab-nav button:hover {
-            background-color: #40000e; 
-            color: #FFC72C; 
-        }
-
-        .tab-nav button.active {
-            background-color: #FFC72C; 
-            color: #730018; 
-            font-weight: bold;
-            border-top: 3px solid #730018;
-        }
-
-        /* --- Tab Content Styling --- */
-        .tab-content {
-            display: none;
-            padding: 30px; 
-            background-color: white;
-            min-height: 600px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border-radius: 0 0 8px 8px; 
-            margin: 10px 20px 20px 20px;
-        }
-        
-        .tab-content h2 {
-            color: #730018;
-            border-bottom: 3px solid #FFC72C;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        /* --- Gallery Styling (Tab 1) --- */
-        #gallery-tab {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 20px; 
-        }
-
-        .gallery-photo {
-            border: 4px solid #FFC72C; 
-            padding: 5px;
-            text-align: center;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-            border-radius: 8px;
-            overflow: hidden; 
-            transition: transform 0.2s;
-            cursor: pointer; /* Indicate clickability */
-        }
-        
-        .gallery-photo:hover {
-            transform: translateY(-3px); 
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-
-        .gallery-photo img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 4px;
-        }
-
-        /* --- Lightbox/Modal for Photos --- */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            padding-top: 60px; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.9); 
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-        
-        .modal-content, #caption {
-            animation-name: zoom;
-            animation-duration: 0.6s;
-        }
-        
-        @keyframes zoom {
-            from {transform:scale(0)} 
-            to {transform:scale(1)}
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        #caption {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            text-align: center;
-            color: #ccc;
-            padding: 10px 0;
-            height: 150px;
-        }
-
-        /* --- Fun Facts Styling (Tab 2, 5) --- */
-        .fact-section {
-            margin-bottom: 40px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-        }
-        
-        .fact-section h3 {
-            color: #730018; 
-            border-left: 6px solid #FFC72C; 
-            padding-left: 12px;
-            margin-top: 0;
-            font-size: 1.4em;
-        }
-
-        .facts-list {
-            list-style-type: none;
-            padding: 0;
-            counter-reset: fact-counter;
-        }
-
-        .facts-list li {
-            counter-increment: fact-counter;
-            background-color: #fff; 
-            margin-bottom: 10px;
-            padding: 12px 12px 12px 45px;
-            border-left: 4px solid #730018; 
-            border-radius: 6px;
-            box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
-            position: relative;
-        }
-        
-        .facts-list li::before {
-            content: counter(fact-counter) ".";
-            position: absolute;
-            left: 15px;
-            font-weight: bold;
-            color: #FFC72C;
-        }
-
-        /* --- Game Styling (Tabs 3 & 4) --- */
-        .game-area {
-            margin-top: 20px;
-            padding: 40px;
-            border: 3px solid #730018; 
-            background-color: #fffaf0;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-        }
-
-        .question-container {
-            margin-bottom: 30px;
-            font-size: 1.4em;
-            font-weight: bold;
-            color: #730018; 
-            background-color: #FFC72C;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .answer-button {
-            display: block;
-            width: 80%;
-            margin: 12px auto;
-            padding: 12px 20px;
-            font-size: 1.1em;
-            cursor: pointer;
-            background-color: #f0f0f0; 
-            color: #333; 
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            transition: all 0.2s;
-            font-family: Arial, sans-serif;
-            font-weight: 500;
-        }
-
-        .answer-button:hover:not(:disabled) {
-            background-color: #FFC72C; 
-            color: #730018;
-            border-color: #730018;
-        }
-        
-        .answer-button:disabled {
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
-
-        /* Feedback Colors */
-        .correct {
-            background-color: #28a745 !important; 
-            color: white !important;
-            border-color: #1e7e34 !important;
-        }
-        .incorrect {
-            background-color: #dc3545 !important; 
-            color: white !important;
-            border-color: #bd2130 !important;
-        }
-        
-        .result-message {
-            margin-top: 25px;
-            font-size: 1.3em;
-            color: #730018;
-            font-weight: bold;
-        }
-        
-        .score-display {
-            font-size: 1.8em;
-            margin-bottom: 25px;
-            color: #730018; 
-            font-weight: bold;
-        }
-    </style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e6e6e6;
+}
+.header-bar {
+    background-color: #730018;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+.tab-nav {
+    overflow: hidden;
+    border-bottom: 3px solid #FFC72C;
+    background-color: #590013;
+}
+.tab-nav button {
+    background-color: inherit;
+    color: white;
+    float: left;
+    border: none;
+    cursor: pointer;
+    padding: 16px 20px;
+    transition: 0.3s;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.tab-nav button:hover {
+    background-color: #40000e;
+    color: #FFC72C;
+}
+.tab-nav button.active {
+    background-color: #FFC72C;
+    color: #730018;
+    border-top: 3px solid #730018;
+}
+.tab-content {
+    display: none;
+    padding: 30px;
+    background-color: white;
+    min-height: 600px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin: 10px 20px;
+    border-radius: 0 0 8px 8px;
+}
+#gallery-tab {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+.gallery-photo {
+    border: 4px solid #FFC72C;
+    padding: 5px;
+    border-radius: 8px;
+}
+.gallery-photo img {
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+.fact-section {
+    margin-bottom: 40px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+.fact-section h3 {
+    color: #730018;
+    border-left: 6px solid #FFC72C;
+    padding-left: 12px;
+}
+.facts-list {
+    list-style: none;
+    padding: 0;
+}
+.facts-list li {
+    background: white;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-left: 4px solid #730018;
+    border-radius: 6px;
+}
+.game-area {
+    padding: 30px;
+    background: #fffaf0;
+    border: 3px solid #730018;
+    border-radius: 12px;
+    text-align: center;
+}
+.score-display {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #730018;
+}
+.question-container {
+    font-size: 1.3em;
+    background: #FFC72C;
+    color: #730018;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.answer-button {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 12px;
+    cursor: pointer;
+    background: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.05em;
+}
+.answer-button:hover {
+    background: #FFC72C;
+    color: #730018;
+}
+.correct { background: #28a745 !important; color: white !important; }
+.incorrect { background: #dc3545 !important; color: white !important; }
+.start-button {
+    padding: 12px 20px;
+    background: #730018;
+    color: white;
+    border: none;
+    font-size: 1.1em;
+    border-radius: 8px;
+}
+.start-button:hover { background: #550012; }
+</style>
 </head>
+
 <body>
 
-    <div class="header-bar">
-        FACTS AND TRIVIA FOR MIDDLE SCHOOL RETREAT
-    </div>
+<div class="header-bar">FACTS AND TRIVIA FOR MIDDLE SCHOOL RETREAT</div>
 
-    <div class="tab-nav">
-        <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">📸 Photo Gallery</button>
-        <button class="tablinks" onclick="openTab(event, 'Tab2')">💡 Fun Facts</button>
-        <button class="tablinks" onclick="openTab(event, 'Tab5')">🏫 Gannon University Facts</button> 
-        <button class="tablinks" onclick="openTab(event, 'Tab3')">👑 Saint Trivia</button>
-        <button class="tablinks" onclick="openTab(event, 'Tab4')">🛡️ Gannon History Trivia</button>
-    </div>
+<div class="tab-nav">
+    <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">📸 Gallery</button>
+    <button class="tablinks" onclick="openTab(event, 'Tab2')">💡 Fun Facts</button>
+    <button class="tablinks" onclick="openTab(event, 'Tab5')">🏫 Gannon Facts</button>
+    <button class="tablinks" onclick="openTab(event, 'Tab3')">👑 Saint Trivia</button>
+    <button class="tablinks" onclick="openTab(event, 'Tab4')">🛡️ Gannon Trivia</button>
+</div>
 
-    <div id="Tab1" class="tab-content">
-        <h2>📸 Photo Gallery: Gannon Campus Views (Click to Enlarge!)</h2>
-        <p>A mix of campus life, architecture, and beautiful Erie skies across different seasons.</p>
-        <div id="gallery-tab">
-            
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (1).jpeg" alt="Gothic church spires against a clear blue sky" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM.jpg" alt="Close-up of a large stained glass window on a stone church" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (3).jpeg" alt="Chapel spire against a cloudy sky with flying birds" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (6).jpeg" alt="Chapel and campus building at sunset from a street view" onclick="openModal(this)">
-            </div>
-            
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (5).jpg" alt="Statue of the Virgin Mary against a brick wall" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (4).jpg" alt="Another view of the Virgin Mary statue" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (2).jpeg" alt="Hand holding a lit candle with a 'Candlelight Service' holder" onclick="openModal(this)">
-            </div>
-            
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (7).jpeg" alt="Chapel and parking lot under a dramatic sunset sky" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (8).jpeg" alt="Chapel building with a vibrant orange and gray sunset sky" onclick="openModal(this)">
-            </div>
-            
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (2).jpeg" alt="Snowy path at night on campus" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM.jpeg" alt="Small rabbit sitting in the grass near a bench" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (1).jpg" alt="Bench with Gannon logo, rabbit, and Virgin Mary statue" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (3).jpeg" alt="Snowy footpath leading toward the chapel spire" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (4).jpeg" alt="Snow-covered campus walkway near buildings and parked cars" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (6).jpeg" alt="View of a snowy parking area and walkway" onclick="openModal(this)">
-            </div>
-            <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.32.52 AM (5).jpeg" alt="Person walking on a cleared snowy path toward a red car and the chapel" onclick="openModal(this)">
-            </div>
+<!-- Gallery -->
+<div id="Tab1" class="tab-content">
+<h2>📸 Campus Gallery</h2>
+<div id="gallery-tab">
+    <!-- 📷 Replace these images with yours -->
+    <div class="gallery-photo"><img src="image1.jpg" onclick="openModal(this)"></div>
+    <div class="gallery-photo"><img src="image2.jpg" onclick="openModal(this)"></div>
+    <div class="gallery-photo"><img src="image3.jpg" onclick="openModal(this)"></div>
+</div>
+</div>
 
-        </div>
-    </div>
-    
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="img01">
-        <div id="caption"></div>
-    </div>
+<div id="myModal" class="modal">
+<span class="close" onclick="closeModal()">&times;</span>
+<img class="modal-content" id="img01">
+</div>
 
-    <div id="Tab2" class="tab-content">
-        <h2>💡 Comprehensive Fun Facts</h2>
+<!-- Fun Facts -->
+<div id="Tab2" class="tab-content">
+<h2>💡 Fun Faith Facts</h2>
 
-        <div class="fact-section" id="confession-facts">
-            <h3>🤫 Confession: Secret Agent Facts</h3>
-            <ul class="facts-list">
-                </ul>
-        </div>
+<div class="fact-section">
+<h3>🤫 Confession</h3>
+<ul class="facts-list" id="confession-facts"></ul>
+</div>
 
-        <div class="fact-section" id="archbishop-gannon-facts"> 
-            <h3>🌟 Key Facts About Archbishop John Mark Gannon</h3>
-            <ul class="facts-list">
-                </ul>
-        </div>
+<div class="fact-section">
+<h3>🌟 Archbishop Gannon</h3>
+<ul class="facts-list" id="archbishop-gannon-facts"></ul>
+</div>
 
-        <div class="fact-section" id="saint-facts">
-            <h3>👑 Saint Facts: Carlo Acutis, Joan of Arc, & Edward the Confessor</h3>
-            <ul class="facts-list">
-                </ul>
-        </div>
-    </div>
+<div class="fact-section">
+<h3>👑 Saints</h3>
+<ul class="facts-list" id="saint-facts"></ul>
+</div>
+</div>
 
-    <div id="Tab5" class="tab-content"> 
-        <h2>🏫 Gannon University: History & Mission</h2>
-        <p>Discover the journey and core values of Gannon University.</p>
-        <div class="fact-section">
-            <h3>🛡️ Gannon University Development</h3>
-            <ul class="facts-list" id="gannon-university-history-list">
-                </ul>
-        </div>
-    </div>
+<!-- Gannon University Facts -->
+<div id="Tab5" class="tab-content">
+<h2>🏫 Gannon University Facts</h2>
+<ul class="facts-list" id="gannon-university-history-list"></ul>
+</div>
 
-    <div id="Tab3" class="tab-content">
-        <h2>👑 Saint & Historical Challenge</h2>
-        <p>Test your knowledge on the featured saints and historical figures!</p>
-        <div class="game-area" id="saint-game-area">
-            <div class="score-display" id="saint-score-display">Score: 0</div>
-            <div class="question-container" id="saint-question-container">Press Start to begin!</div>
-            <div id="saint-answers-container">
-                </div>
-            <p class="result-message" id="saint-result-message"></p>
-            <button id="saintStartGameButton" class="start-button">Start Quiz</button>
-            <button id="saintNextQuestionButton" style="display: none;">Next Question</button>
-        </div>
-    </div>
-    
-    <div id="Tab4" class="tab-content">
-        <h2>🛡️ Gannon University History Trivia</h2>
-        <p>How much do you know about the history of Gannon?</p>
-        <div class="game-area" id="gannon-game-area">
-            <div class="score-display" id="gannon-score-display">Score: 0</div>
-            <div class="question-container" id="gannon-question-container">Press Start to begin!</div>
-            <div id="gannon-answers-container">
-                </div>
-            <p class="result-message" id="gannon-result-message"></p>
-            <button id="gannonStartGameButton" class="start-button">Start Quiz</button>
-            <button id="gannonNextQuestionButton" style="display: none;">Next Question</button>
-        </div>
-    </div>
+<!-- Saint Trivia Game -->
+<div id="Tab3" class="tab-content">
+<h2>👑 Saint Trivia</h2>
+<div class="game-area">
+<div class="score-display" id="saint-score">Score: 0</div>
+<div class="question-container" id="saint-question">Press Start to begin</div>
+<div id="saint-answers"></div>
+<button class="start-button" onclick="startSaintQuiz()">Start Quiz</button>
+</div>
+</div>
 
-    <script>
-        // --- 1. Tab Switching Logic ---
+<!-- Gannon Trivia Game -->
+<div id="Tab4" class="tab-content">
+<h2>🛡️ Gannon Trivia</h2>
+<div class="game-area">
+<div class="score-display" id="gannon-score">Score: 0</div>
+<div class="question-container" id="gannon-question">Press Start to begin</div>
+<div id="gannon-answers"></div>
+<button class="start-button" onclick="startGannonQuiz()">Start Quiz</button>
+</div>
+</div>
 
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
+<script>
+// ---------------- Tabs -------------
+function openTab(evt, name) {
+    document.querySelectorAll(".tab-content").forEach(t => t.style.display = "none");
+    document.querySelectorAll(".tablinks").forEach(b => b.classList.remove("active"));
+    document.getElementById(name).style.display = "block";
+    evt.currentTarget.classList.add("active");
+}
+document.getElementById("defaultOpen").click();
 
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
+// ---------------- Modal ------------
+function openModal(img) {
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("img01").src = img.src;
+}
+function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+}
 
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
+// ---------------- Fact Data --------------
+const factData = {
+confession: [
+"Confession is also called Reconciliation or Penance.",
+"Priests can never reveal what they hear — ever.",
+"Confession was made private thanks to Irish monks.",
+"God gives grace to grow stronger against temptation.",
+"Church asks Catholics to go at least once a year."
+],
+archbishopGannon: [
+"Founded Cathedral Prep in 1921.",
+"Founded Gannon College in 1944.",
+"Built 49 churches and 28 parishes.",
+"Helped start Mercyhurst & Villa Maria.",
+"Attended every session of Vatican II."
+],
+saints: [
+"Carlo Acutis used computers to share miracles online.",
+"Joan of Arc led an army at age 17.",
+"Edward the Confessor built Westminster Abbey.",
+"Carlo said the Eucharist is his 'highway to heaven'.",
+"Joan of Arc died at only 19 years old."
+],
+gannonUniversityHistory: [
+"Founded originally in 1925 as Cathedral College.",
+"Strong Mansion bought in 1941 — now Old Main.",
+"Became Gannon College in 1944.",
+"Became co-ed in 1964.",
+"Became Gannon University in 1979."
+]
+};
 
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
+// Load Facts to Page
+function loadFacts() {
+Object.keys(factData).forEach(key => {
+let target =
+key === "confession" ? "confession-facts" :
+key === "archbishopGannon" ? "archbishop-gannon-facts" :
+key === "saints" ? "saint-facts" :
+"gannon-university-history-list";
 
-        // Open the default tab on page load
-        document.getElementById("defaultOpen").click();
-        
-        // --- 2. Lightbox/Modal Functionality ---
-        const modal = document.getElementById("myModal");
-        const modalImg = document.getElementById("img01");
-        const captionText = document.getElementById("caption");
-        
-        function openModal(imgElement) {
-            modal.style.display = "block";
-            modalImg.src = imgElement.src;
-            captionText.innerHTML = imgElement.alt;
-        }
+let list = document.getElementById(target);
+factData[key].forEach(f => {
+    let li = document.createElement("li");
+    li.textContent = f;
+    list.appendChild(li);
+});
+});
+}
+loadFacts();
 
-        function closeModal() {
-            modal.style.display = "none";
-        }
-        
-        // Close modal when user clicks outside the image area
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+// ----------------- Quiz Questions ----------------
+const saintQuestions = [
+{q:"Who built a website of Eucharistic miracles?",a:["Joan of Arc","Carlo Acutis","Edward the Confessor"],c:1},
+{q:"Which saint led an army?",a:["Carlo Acutis","Joan of Arc","St. Peter"],c:1},
+{q:"Who built Westminster Abbey?",a:["Edward the Confessor","Carlo Acutis","St. Francis"],c:0}
+];
+let saintScore = 0, saintIndex = 0;
 
+function startSaintQuiz(){
+saintScore=0; saintIndex=0;
+runSaintQuestion();
+}
+function runSaintQuestion(){
+let q = saintQuestions[saintIndex];
+document.getElementById("saint-score").innerText="Score: "+saintScore;
+document.getElementById("saint-question").innerText=q.q;
+let box = document.getElementById("saint-answers");
+box.innerHTML="";
+q.a.forEach((ans,i)=>{
+let b=document.createElement("button");
+b.className="answer-button";
+b.innerText=ans;
+b.onclick=()=> {
+if(i===q.c){ b.classList.add("correct"); saintScore++; }
+else b.classList.add("incorrect");
+setTimeout(()=>{
+saintIndex++; saintIndex<saintQuestions.length?runSaintQuestion():document.getElementById("saint-question").innerText="Game Over! Final Score: "+saintScore;
+},600);
+};
+box.appendChild(b);
+});
+}
 
-        // --- 3. Fact Data ---
+// ---- Gannon Quiz ----
+const gannonQuestions=[
+{q:"What year did Gannon become a university?",a:["1925","1979","1964"],c:1},
+{q:"What is Old Main?",a:["Church","Mansion","Dorm"],c:1},
+{q:"Which school did Gannon's founder also start?",a:["Harvard","Cathedral Prep","Yale"],c:1}
+];
+let gScore=0,gIndex=0;
 
-        const factData = {
-            confession: [
-                "Confession has three names: Confession, Reconciliation, or the Sacrament of Penance.",
-                "The 'Seal of Confession' is a serious rule: a priest can never tell anyone what was said.",
-                "It was the Irish monks (around the 600s AD) who helped make Confession private and repeatable.",
-                "You can choose to talk face-to-face with the priest, or you can use the screen for anonymity.",
-                "God gives you 'grace' (spiritual power) to help you be stronger and resist temptations in the future.",
-                "The Church asks all Catholics who have committed a serious sin to go to Confession at least once every year."
-            ],
-            archbishopGannon: [ 
-                "Archbishop John Mark Gannon became the fifth bishop of Erie, Pennsylvania, in 1920.",
-                "He founded Cathedral Preparatory School (1921) and Cathedral College (1933) in Erie.",
-                "Gannon helped establish other colleges like Villa Maria College (Buffalo, NY) and Mercyhurst College (Erie).",
-                "Even after age 80, he founded five regional high schools for Catholic education.",
-                "He founded many hospitals (e.g., Spencer, St. Vincent's) and homes for children and the elderly (e.g., St. Joseph's, St. Mary's).",
-                "Gannon oversaw a huge building effort: establishing 28 new parishes and constructing 49 churches.",
-                "In 1937, he helped found Montezuma Seminary in New Mexico to train Mexican priests.",
-                "He traveled to Spain in 1938 to investigate the persecution of the Catholic Church during the Civil War.",
-                "He founded Noticias Católicas, a news service for Spanish and Portuguese speakers.",
-                "Pope Pius XII gave him the special, personal title of Archbishop in 1953.",
-                "Between 1962 and 1965, he attended all four sessions of the Second Vatican Council."
-            ],
-            saints: [
-                // Carlo Acutis
-                "Carlo Acutis was born in 1991 and died in 2006 at the age of 15, making him one of the first people from the millennial generation to be declared 'Blessed'.",
-                "Carlo was a self-taught programmer who used his tech skills to build a huge website that cataloged all the known Eucharistic Miracles.",
-                "Carlo was a normal kid who loved soccer, video games, and had a dog named 'Buster'!",
-                "Carlo's motto was: 'Not me, but God.' He believed his life goal was to always put God first.",
-                "Carlo taught that the Eucharist (receiving Communion) is like a 'highway to heaven.'",
-                // Joan of Arc
-                "Joan of Arc was a simple peasant girl in France in the 1400s who became the leader of the entire French army.",
-                "At the age of 13, Joan claimed she began hearing the voices of saints telling her to kick the English out of France.",
-                "Joan famously wore full men's armor and cutting her hair short—which was very unusual for the time.",
-                "Joan was captured and sadly executed when she was only 19 years old.",
-                "Joan of Arc is the Patron Saint of France and a symbol of fighting for what is right.",
-                // Edward the Confessor
-                "Edward the Confessor was given his title because he bravely 'confessed' (professed) his Christian faith through his life, not because he was a martyr.",
-                "Edward started building the magnificent Westminster Abbey in London.",
-                "Edward took a private vow to live a life of chastity, so he and his wife Edith never had children.",
-                "Edward's death without an heir in 1066 led directly to the famous Battle of Hastings and the Norman Conquest.",
-                "Edward's father was Æthelred II, famously known as 'Æthelred the Unready'."
-            ],
-            gannonUniversityHistory: [ 
-                "Cathedral Beginnings! Gannon College of Arts and Sciences started its life way back in 1925 as Cathedral College under the charter of Villa Maria College.",
-                "The Mansion's History! In 1941, Archbishop John Mark Gannon purchased the gorgeous Strong Mansion in downtown Erie. This historic building became the central site of the campus and is known today as 'Old Main'.",
-                "A Men's College... for a Time! It received its own charter as a four-year, men's-only institution in 1944, when it was renamed Gannon College.",
-                "Welcome, Ladies! Gannon went co-educational and established its graduate school in 1964.",
-                "University Status Achieved! The college officially became Gannon University in 1979!",
-                "A Regional Gem! Gannon is a private, Catholic, comprehensive co-educational institution and is considered Northwestern Pennsylvania's premier Catholic university and a valuable community resource.",
-                "Focus on Future Leaders! A major part of Gannon's mission is fostering leadership through campus organizations, volunteerism, and community service.",
-                "Commitment to the Future! Today, Gannon is dedicated to boosting academic excellence, strengthening its Catholic identity, growing its financial resources, developing faculty scholarship, serving the community, increasing enrollment, and enhancing technology."
-            ]
-        };
-
-        // --- 4. Dynamic Fact Loading (Tab 2 & Tab 5) ---
-        function loadFacts(category, elementId) {
-            const factsList = document.querySelector(`#${elementId} .facts-list`);
-            if (factsList) {
-                factsList.innerHTML = '';
-                factData[category].forEach(factText => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = factText;
-                    factsList.appendChild(listItem);
-                });
-            }
-        }
-        
-        loadFacts('confession', 'confession-facts'); 
-        loadFacts('archbishopGannon', 'archbishop-gannon-facts'); 
-        loadFacts('saints', 'saint-facts'); 
-        loadFacts('gannonUniversityHistory', 'gannon-university-history-list'); // THIS IS THE CORRECTED SECTION
-        
-        // --- 5. Game Question Data (Unchanged) ---
-
-        const saintQuestions = [
-            {
-                question: "Which saint was a self-taught programmer who used his tech skills to catalog Eucharistic Miracles?",
-                options: ["St. Edward the Confessor", "St. Joan of Arc", "Blessed Carlo Acutis", "St. Michael the Archangel"],
-                answer: "Blessed Carlo Acutis"
-            },
-            {
-                question: "Which English King and Saint started the construction of Westminster Abbey?",
-                options: ["King Æthelred the Unready", "King Henry VIII", "St. Edward the Confessor", "King William the Conqueror"],
-                answer: "St. Edward the Confessor"
-            },
-            {
-                question: "How old was Joan of Arc when she was executed?",
-                options: ["13 years old", "19 years old", "25 years old", "30 years old"],
-                answer: "19 years old"
-            },
-            {
-                question: "What did Blessed Carlo Acutis call the Eucharist (receiving Communion)?",
-                options: ["A spiritual power-up", "A highway to heaven", "The King's Ring", "The Seal"],
-                answer: "A highway to heaven"
-            }
-        ];
-        
-        const gannonQuestions = [
-            {
-                question: "What was Gannon College of Arts and Sciences originally called in 1925?",
-                options: ["Strong College", "Villa Maria College", "Cathedral College", "Erie College"],
-                answer: "Cathedral College"
-            },
-            {
-                question: "What year did Gannon officially become a co-educational institution (admitting women)?",
-                options: ["1944", "1964", "1979", "1925"],
-                answer: "1964"
-            },
-            {
-                question: "What is the historic Strong Mansion, purchased in 1941, known as today?",
-                options: ["The Administration Building", "The Student Center", "Old Main", "Gannon Hall"],
-                answer: "Old Main"
-            },
-            {
-                question: "In what year did Gannon College achieve University status?",
-                options: ["1944", "1964", "1979", "2000"],
-                answer: "1979"
-            }
-        ];
-
-        // --- 6. Generic Game Engine Function (Unchanged) ---
-        
-        function setupGame(questions, prefix) {
-            let currentQuestionIndex = 0;
-            let score = 0;
-            let gameActive = false;
-
-            const questionContainer = document.getElementById(`${prefix}-question-container`);
-            const answersContainer = document.getElementById(`${prefix}-answers-container`);
-            const resultMessage = document.getElementById(`${prefix}-result-message`);
-            const startGameButton = document.getElementById(`${prefix}StartGameButton`);
-            const nextQuestionButton = document.getElementById(`${prefix}NextQuestionButton`);
-            const scoreDisplay = document.getElementById(`${prefix}-score-display`);
-
-            startGameButton.addEventListener('click', startGame);
-            nextQuestionButton.addEventListener('click', loadNextQuestion);
-
-            function startGame() {
-                score = 0;
-                currentQuestionIndex = 0;
-                gameActive = true;
-                startGameButton.style.display = 'none';
-                resultMessage.textContent = '';
-                scoreDisplay.textContent = 'Score: 0';
-                loadQuestion(currentQuestionIndex);
-            }
-
-            function loadQuestion(index) {
-                if (index >= questions.length) {
-                    endGame();
-                    return;
-                }
-                
-                const q = questions[index];
-                questionContainer.textContent = `Question ${index + 1}: ${q.question}`;
-                answersContainer.innerHTML = '';
-                nextQuestionButton.style.display = 'none';
-                resultMessage.textContent = '';
-
-                q.options.forEach(option => {
-                    const button = document.createElement('button');
-                    button.textContent = option;
-                    button.className = 'answer-button';
-                    button.onclick = () => checkAnswer(button, option, q.answer);
-                    answersContainer.appendChild(button);
-                });
-            }
-
-            function checkAnswer(selectedButton, selectedAnswer, correctAnswer) {
-                if (!gameActive) return;
-
-                Array.from(answersContainer.children).forEach(btn => btn.disabled = true);
-
-                if (selectedAnswer === correctAnswer) {
-                    score++;
-                    scoreDisplay.textContent = `Score: ${score}`;
-                    selectedButton.classList.add('correct');
-                    resultMessage.textContent = '✅ Correct!';
-                } else {
-                    selectedButton.classList.add('incorrect');
-                    Array.from(answersContainer.children).forEach(btn => {
-                        if (btn.textContent === correctAnswer) {
-                            btn.classList.add('correct');
-                        }
-                    });
-                    resultMessage.textContent = `❌ Incorrect. The correct answer was: ${correctAnswer}.`;
-                }
-
-                nextQuestionButton.style.display = 'block';
-            }
-
-            function loadNextQuestion() {
-                currentQuestionIndex++;
-                loadQuestion(currentQuestionIndex);
-            }
-
-            function endGame() {
-                gameActive = false;
-                questionContainer.textContent = 'Quiz Finished!';
-                answersContainer.innerHTML = '';
-                resultMessage.textContent = `Great Job! Your final score is ${score} out of ${questions.length}.`;
-                startGameButton.textContent = 'Play Again';
-                startGameButton.style.display = 'block';
-                nextQuestionButton.style.display = 'none';
-            }
-        }
-        
-        // Initialize both games
-        setupGame(saintQuestions, 'saint');
-        setupGame(gannonQuestions, 'gannon');
-        
-
-    </script>
+function startGannonQuiz(){
+gScore=0; gIndex=0;
+runGannon();
+}
+function runGannon(){
+let q=gannonQuestions[gIndex];
+document.getElementById("gannon-score").innerText="Score: "+gScore;
+document.getElementById("gannon-question").innerText=q.q;
+let box=document.getElementById("gannon-answers");
+box.innerHTML="";
+q.a.forEach((ans,i)=>{
+let b=document.createElement("button");
+b.className="answer-button";
+b.innerText=ans;
+b.onclick=()=>{
+if(i===q.c){b.classList.add("correct");gScore++;}
+else b.classList.add("incorrect");
+setTimeout(()=>{
+gIndex++; gIndex<gannonQuestions.length?runGannon():document.getElementById("gannon-question").innerText="Game Over! Final Score: "+gScore;
+},500);
+};
+box.appendChild(b);
+});
+}
+</script>
 
 </body>
 </html>
