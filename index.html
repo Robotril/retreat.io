@@ -13,14 +13,27 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4; 
+            background-color: #e6e6e6; /* Light gray background for contrast */
+        }
+
+        /* --- Header/Branding --- */
+        .header-bar {
+            background-color: #730018; /* Gannon Maroon */
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
 
         /* --- Tab Navigation Styling --- */
         .tab-nav {
             overflow: hidden;
-            border-bottom: 2px solid #FFC72C; 
-            background-color: #730018; 
+            border-bottom: 3px solid #FFC72C; 
+            background-color: #590013; /* Darker Maroon */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .tab-nav button {
@@ -30,146 +43,195 @@
             border: none;
             outline: none;
             cursor: pointer;
-            padding: 14px 16px;
+            padding: 16px 20px; /* Increased padding */
             transition: 0.3s;
-            font-size: 17px;
+            font-size: 16px;
             font-family: Arial, sans-serif; 
+            text-transform: uppercase;
         }
 
         .tab-nav button:hover {
-            background-color: #590013; 
+            background-color: #40000e; 
             color: #FFC72C; 
         }
 
         .tab-nav button.active {
             background-color: #FFC72C; 
             color: #730018; 
+            font-weight: bold;
+            border-top: 3px solid #730018;
         }
 
         /* --- Tab Content Styling --- */
         .tab-content {
             display: none;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-top: none;
+            padding: 30px; /* Increased padding */
             background-color: white;
-            min-height: 500px;
+            min-height: 600px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 0 0 8px 8px; /* Rounded bottom corners */
+            margin: 10px 20px 20px 20px;
+        }
+        
+        .tab-content h2 {
+            color: #730018;
+            border-bottom: 3px solid #FFC72C;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         /* --- Gallery Styling (Tab 1) --- */
         #gallery-tab {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Larger minimum size */
+            gap: 20px; /* Increased gap */
         }
 
         .gallery-photo {
-            border: 3px solid #730018; 
+            border: 4px solid #FFC72C; /* Gold border */
             padding: 5px;
             text-align: center;
             background-color: #fff;
-            box-shadow: 4px 4px 8px rgba(0,0,0,0.2);
-            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+            border-radius: 8px;
             overflow: hidden; 
+            transition: transform 0.2s;
+        }
+        
+        .gallery-photo:hover {
+            transform: translateY(-3px); /* Lift effect on hover */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
 
         .gallery-photo img {
             width: 100%;
             height: auto;
             display: block;
+            border-radius: 4px;
         }
 
         /* --- Fun Facts Styling (Tab 2, 5) --- */
         .fact-section {
-            margin-bottom: 30px;
-            border-bottom: 2px solid #FFC72C;
-            padding-bottom: 15px;
+            margin-bottom: 40px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
         }
         
         .fact-section h3 {
             color: #730018; 
-            border-left: 5px solid #FFC72C; 
-            padding-left: 10px;
+            border-left: 6px solid #FFC72C; /* Thicker accent line */
+            padding-left: 12px;
+            margin-top: 0;
+            font-size: 1.4em;
         }
 
         .facts-list {
             list-style-type: none;
             padding: 0;
+            counter-reset: fact-counter;
         }
 
         .facts-list li {
-            background-color: #ffeecc; 
-            margin-bottom: 8px;
-            padding: 10px;
-            border-left: 3px solid #730018; 
-            border-radius: 4px;
+            counter-increment: fact-counter;
+            background-color: #fff; 
+            margin-bottom: 10px;
+            padding: 12px 12px 12px 45px;
+            border-left: 4px solid #730018; 
+            border-radius: 6px;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .facts-list li::before {
+            content: counter(fact-counter) ".";
+            position: absolute;
+            left: 15px;
+            font-weight: bold;
+            color: #FFC72C;
         }
 
         /* --- Game Styling (Tabs 3 & 4) --- */
         .game-area {
             margin-top: 20px;
-            padding: 30px;
-            border: 2px dashed #730018; 
+            padding: 40px;
+            border: 3px solid #730018; /* Solid Maroon border */
             background-color: #fffaf0;
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
         }
 
         .question-container {
-            margin-bottom: 20px;
-            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-size: 1.4em;
             font-weight: bold;
             color: #730018; 
+            background-color: #FFC72C;
+            padding: 15px;
+            border-radius: 8px;
         }
 
         .answer-button {
             display: block;
             width: 80%;
-            margin: 10px auto;
-            padding: 10px 20px;
-            font-size: 1em;
+            margin: 12px auto;
+            padding: 12px 20px;
+            font-size: 1.1em;
             cursor: pointer;
-            background-color: #FFC72C; 
-            color: #730018; 
-            border: 1px solid #730018;
-            border-radius: 5px;
-            transition: background-color 0.2s;
+            background-color: #f0f0f0; 
+            color: #333; 
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            transition: all 0.2s;
             font-family: Arial, sans-serif;
+            font-weight: 500;
         }
 
         .answer-button:hover:not(:disabled) {
-            background-color: #e0ac00; 
+            background-color: #FFC72C; /* Gold hover */
+            color: #730018;
+            border-color: #730018;
         }
         
         .answer-button:disabled {
             cursor: not-allowed;
+            opacity: 0.6;
         }
 
         /* Feedback Colors */
         .correct {
-            background-color: #28a745 !important; 
+            background-color: #28a745 !important; /* Green */
             color: white !important;
+            border-color: #1e7e34 !important;
         }
         .incorrect {
-            background-color: #dc3545 !important; 
+            background-color: #dc3545 !important; /* Red */
             color: white !important;
+            border-color: #bd2130 !important;
         }
         
         .result-message {
-            margin-top: 15px;
-            font-size: 1.2em;
+            margin-top: 25px;
+            font-size: 1.3em;
             color: #730018;
+            font-weight: bold;
         }
         
         .score-display {
-            font-size: 1.5em;
-            margin-bottom: 20px;
+            font-size: 1.8em;
+            margin-bottom: 25px;
             color: #730018; 
             font-weight: bold;
         }
     </style>
 </head>
 <body>
+
+    <div class="header-bar">
+        GANNON & CONFESSION FACTS SITE 🛡️
+    </div>
 
     <div class="tab-nav">
         <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">📸 Photo Gallery</button>
@@ -255,7 +317,7 @@
         </div>
 
         <div class="fact-section" id="saint-facts">
-            <h3>👑 Saint Facts: Carlo Acutis & Joan of Arc</h3>
+            <h3>👑 Saint Facts: Carlo Acutis, Joan of Arc, & Edward the Confessor</h3>
             <ul class="facts-list">
                 </ul>
         </div>
@@ -359,7 +421,7 @@
                 "Joan famously wore full men's armor and cutting her hair short—which was very unusual for the time.",
                 "Joan was captured and sadly executed when she was only 19 years old.",
                 "Joan of Arc is the Patron Saint of France and a symbol of fighting for what is right.",
-                // Edward the Confessor
+                // Edward the Confessor FACTS - NOW CONFIRMED
                 "Edward the Confessor was given his title because he bravely 'confessed' (professed) his Christian faith through his life, not because he was a martyr.",
                 "Edward started building the magnificent Westminster Abbey in London.",
                 "Edward took a private vow to live a life of chastity, so he and his wife Edith never had children.",
@@ -379,22 +441,27 @@
         };
 
         // --- 3. Dynamic Fact Loading (Tab 2 & Tab 5) ---
+        // This function loads the facts from the JavaScript object into the HTML lists.
         function loadFacts(category, elementId) {
             const factsList = document.querySelector(`#${elementId} .facts-list`);
-            factsList.innerHTML = '';
-            factData[category].forEach(factText => {
-                const listItem = document.createElement('li');
-                listItem.textContent = factText;
-                factsList.appendChild(listItem);
-            });
+            // Check if the facts list element exists to prevent errors
+            if (factsList) {
+                factsList.innerHTML = '';
+                factData[category].forEach(factText => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = factText;
+                    factsList.appendChild(listItem);
+                });
+            }
         }
         
+        // Call the loader for each fact section
         loadFacts('confession', 'confession-facts'); 
         loadFacts('archbishopGannon', 'archbishop-gannon-facts'); 
-        loadFacts('saints', 'saint-facts'); 
+        loadFacts('saints', 'saint-facts'); // This call will now populate the Edward the Confessor facts
         loadFacts('gannonUniversityHistory', 'gannon-university-history-list'); 
         
-        // --- 4. Game Question Data ---
+        // --- 4. Game Question Data (Unchanged) ---
 
         const saintQuestions = [
             {
@@ -442,7 +509,7 @@
             }
         ];
 
-        // --- 5. Generic Game Engine Function ---
+        // --- 5. Generic Game Engine Function (Unchanged) ---
         
         function setupGame(questions, prefix) {
             let currentQuestionIndex = 0;
