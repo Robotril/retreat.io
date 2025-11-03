@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gannon & Confession Facts Site</title>
+    <link rel="icon" href="gannon_favicon.png" type="image/png"> 
     
     <style>
+        /* Gannon Colors: Maroon/Burgundy (#730018) and Gold/Yellow (#FFC72C) */
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -76,7 +79,7 @@
             display: block;
         }
 
-        /* --- Fun Facts Styling (Tab 2) --- */
+        /* --- Fun Facts Styling (Tab 2, 5) --- */
         .fact-section {
             margin-bottom: 30px;
             border-bottom: 2px solid #FFC72C;
@@ -171,8 +174,9 @@
     <div class="tab-nav">
         <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">📸 Photo Gallery</button>
         <button class="tablinks" onclick="openTab(event, 'Tab2')">💡 Fun Facts</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab5')">🏫 Gannon University Facts</button> 
         <button class="tablinks" onclick="openTab(event, 'Tab3')">👑 Saint Trivia</button>
-        <button class="tablinks" onclick="openTab(event, 'Tab4')">🛡️ Gannon Trivia</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab4')">🛡️ Gannon History Trivia</button>
     </div>
 
     <div id="Tab1" class="tab-content">
@@ -204,7 +208,10 @@
             </div>
             
             <div class="gallery-photo">
-                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (7).jpeg" alt="Chapel and parking lot under a dramatic orange and gray sunset sky">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (7).jpeg" alt="Chapel and parking lot under a dramatic sunset sky">
+            </div>
+            <div class="gallery-photo">
+                <img src="WhatsApp Image 2025-11-03 at 9.26.41 AM (8).jpeg" alt="Chapel building with a vibrant orange and gray sunset sky">
             </div>
             
             <div class="gallery-photo">
@@ -241,15 +248,25 @@
                 </ul>
         </div>
 
+        <div class="fact-section" id="archbishop-gannon-facts"> 
+            <h3>🌟 Key Facts About Archbishop John Mark Gannon</h3>
+            <ul class="facts-list">
+                </ul>
+        </div>
+
         <div class="fact-section" id="saint-facts">
             <h3>👑 Saint Facts: Carlo Acutis & Joan of Arc</h3>
             <ul class="facts-list">
                 </ul>
         </div>
+    </div>
 
-        <div class="fact-section" id="gannon-facts">
-            <h3>🛡️ Gannon History & Development</h3>
-            <ul class="facts-list">
+    <div id="Tab5" class="tab-content"> 
+        <h2>🏫 Gannon University: History & Mission</h2>
+        <p>Discover the journey and core values of Gannon University.</p>
+        <div class="fact-section">
+            <h3>🛡️ Gannon University Development</h3>
+            <ul class="facts-list" id="gannon-university-history-list">
                 </ul>
         </div>
     </div>
@@ -269,7 +286,7 @@
     </div>
     
     <div id="Tab4" class="tab-content">
-        <h2>🛡️ Gannon University History Quiz</h2>
+        <h2>🛡️ Gannon University History Trivia</h2>
         <p>How much do you know about the history of Gannon?</p>
         <div class="game-area" id="gannon-game-area">
             <div class="score-display" id="gannon-score-display">Score: 0</div>
@@ -316,6 +333,19 @@
                 "God gives you 'grace' (spiritual power) to help you be stronger and resist temptations in the future.",
                 "The Church asks all Catholics who have committed a serious sin to go to Confession at least once every year."
             ],
+            archbishopGannon: [ 
+                "Archbishop John Mark Gannon became the fifth bishop of Erie, Pennsylvania, in 1920.",
+                "He founded Cathedral Preparatory School (1921) and Cathedral College (1933) in Erie.",
+                "Gannon helped establish other colleges like Villa Maria College (Buffalo, NY) and Mercyhurst College (Erie).",
+                "Even after age 80, he founded five regional high schools for Catholic education.",
+                "He founded many hospitals (e.g., Spencer, St. Vincent's) and homes for children and the elderly (e.g., St. Joseph's, St. Mary's).",
+                "Gannon oversaw a huge building effort: establishing 28 new parishes and constructing 49 churches.",
+                "In 1937, he helped found Montezuma Seminary in New Mexico to train Mexican priests.",
+                "He traveled to Spain in 1938 to investigate the persecution of the Catholic Church during the Civil War.",
+                "He founded Noticias Católicas, a news service for Spanish and Portuguese speakers.",
+                "Pope Pius XII gave him the special, personal title of Archbishop in 1953.",
+                "Between 1962 and 1965, he attended all four sessions of the Second Vatican Council."
+            ],
             saints: [
                 // Carlo Acutis
                 "Carlo Acutis was born in 1991 and died in 2006 at the age of 15, making him one of the first people from the millennial generation to be declared 'Blessed'.",
@@ -326,7 +356,7 @@
                 // Joan of Arc
                 "Joan of Arc was a simple peasant girl in France in the 1400s who became the leader of the entire French army.",
                 "At the age of 13, Joan claimed she began hearing the voices of saints telling her to kick the English out of France.",
-                "Joan famously wore full men's armor and cut her hair short—which was very unusual for the time.",
+                "Joan famously wore full men's armor and cutting her hair short—which was very unusual for the time.",
                 "Joan was captured and sadly executed when she was only 19 years old.",
                 "Joan of Arc is the Patron Saint of France and a symbol of fighting for what is right.",
                 // Edward the Confessor
@@ -336,18 +366,19 @@
                 "Edward's death without an heir in 1066 led directly to the famous Battle of Hastings and the Norman Conquest.",
                 "Edward's father was Æthelred II, famously known as 'Æthelred the Unready'."
             ],
-            gannon: [
-                "Gannon College of Arts and Sciences started its life way back in 1925 as Cathedral College.",
-                "Archbishop John Mark Gannon purchased the gorgeous Strong Mansion in 1941, which became the central site known as 'Old Main'.",
-                "It received its own charter as a four-year, **men's-only** institution in 1944, when it was renamed Gannon College.",
-                "Gannon went **co-educational** and established its graduate school in 1964.",
-                "The college officially became **Gannon University** in 1979!",
-                "Gannon is considered Northwestern Pennsylvania's **premier Catholic university** and a valuable community resource.",
-                "A major part of Gannon's mission is fostering **leadership** through campus organizations, volunteerism, and community service."
+            gannonUniversityHistory: [ 
+                "Gannon College of Arts and Sciences started its life way back in 1925 as Cathedral College under the charter of Villa Maria College.",
+                "In 1941, Archbishop John Mark Gannon purchased the gorgeous Strong Mansion in downtown Erie. This historic building became the central site of the campus and is known today as 'Old Main'.",
+                "It received its own charter as a four-year, men's-only institution in 1944, when it was renamed Gannon College.",
+                "Gannon went co-educational and established its graduate school in 1964.",
+                "The college officially became Gannon University in 1979!",
+                "Gannon is a private, Catholic, comprehensive co-educational institution and is considered Northwestern Pennsylvania's premier Catholic university and a valuable community resource.",
+                "A major part of Gannon's mission is fostering leadership through campus organizations, volunteerism, and community service.",
+                "Today, Gannon is dedicated to boosting academic excellence, strengthening its Catholic identity, growing its financial resources, developing faculty scholarship, serving the community, increasing enrollment, and enhancing technology."
             ]
         };
 
-        // --- 3. Dynamic Fact Loading (Tab 2) ---
+        // --- 3. Dynamic Fact Loading (Tab 2 & Tab 5) ---
         function loadFacts(category, elementId) {
             const factsList = document.querySelector(`#${elementId} .facts-list`);
             factsList.innerHTML = '';
@@ -359,9 +390,10 @@
         }
         
         loadFacts('confession', 'confession-facts'); 
+        loadFacts('archbishopGannon', 'archbishop-gannon-facts'); 
         loadFacts('saints', 'saint-facts'); 
-        loadFacts('gannon', 'gannon-facts'); 
-
+        loadFacts('gannonUniversityHistory', 'gannon-university-history-list'); 
+        
         // --- 4. Game Question Data ---
 
         const saintQuestions = [
